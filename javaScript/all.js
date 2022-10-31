@@ -71,7 +71,7 @@ function init() {
 init();
 
 
-//新增套票按鈕 綁定 click 監聽事件
+// 新增套票按鈕 綁定 click 監聽事件
 addTicketBtn.addEventListener('click', (e) => {
   e.preventDefault();
 
@@ -361,10 +361,13 @@ function setSuccessMsg(element) {
 
 
 
-
 // 建立套票資料
 function creatTicketData(formObj) {
   data.push(formObj);
+
+  // 新增完套票後，切換
+  regionSearch.value = '全部地區';
+  renderData(data);
 };
 
 
