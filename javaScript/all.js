@@ -52,7 +52,7 @@ const addTicketForm = document.querySelector('.addTicket-form');
 const inputs = document.querySelectorAll('input[type=text], input[type=number],#ticketRegion,textarea')
 
 // 地區搜尋
-const searchArea  = document.querySelector('.search-area');
+const searchArea = document.querySelector('.search-area');
 const regionSearch = document.querySelector('.regionSearch');
 
 // 地區搜尋資料數量
@@ -108,9 +108,9 @@ addTicketBtn.addEventListener('click', (e) => {
     istTicketRateValid &&
     istTicketDescriptionValid;
 
- 
 
-// 全部欄位都驗證過才會送出套票表單
+
+  // 全部欄位都驗證過才會送出套票表單
   if (isFormValid) {
     setTimeout(() => {
       alert('套票資料已建立');
@@ -174,6 +174,7 @@ function isNumValid(price) {
 };
 
 
+
 // 驗證個別欄位
 
 // 驗證套票名稱
@@ -235,7 +236,7 @@ function checkticketPrice() {
   if (!isRequired(ticketPriceValue)) {
     setErrorMsg(ticketPrice, '套票金額 必填!');
   } else if (!isNumValid(ticketPriceValue)) {
-    setErrorMsg(ticketPrice, '套票金額 必須大於1 !');
+    setErrorMsg(ticketPrice, '套票金額 必須大於 1 !');
   } else {
     setSuccessMsg(ticketPrice);
     valid = true;
@@ -254,7 +255,7 @@ function checkticketNum() {
   if (!isRequired(ticketNumValue)) {
     setErrorMsg(ticketNum, '套票組數 必填!');
   } else if (!isNumValid(ticketNumValue)) {
-    setErrorMsg(ticketNum, '套票組數 必須大於1 !');
+    setErrorMsg(ticketNum, '套票組數 必須大於 1 !');
   } else {
     setSuccessMsg(ticketNum);
     valid = true;
@@ -274,7 +275,7 @@ function checkticketRate() {
   if (!isRequired(ticketRateValue)) {
     setErrorMsg(ticketRate, '套票星級 必填!');
   } else if (!isNumValid(ticketRateValue) || ticketRateValue > 10) {
-    setErrorMsg(ticketRate, '套票星級 必須大於1  且小於 10!');
+    setErrorMsg(ticketRate, '套票星級 必須大於 1 ， 且小於 10!');
   } else {
     setSuccessMsg(ticketRate);
     valid = true;
@@ -307,7 +308,6 @@ function checkticketDescription() {
 // 設定表單驗證 error 訊息
 function setErrorMsg(element, message) {
 
-
   // 表單欄位 DOM
   let elementId = element.getAttribute('id');
 
@@ -334,7 +334,6 @@ function setErrorMsg(element, message) {
 
 // 設定表單驗證 success 訊息
 function setSuccessMsg(element) {
-
 
   // 驗證訊息 id
   let elementId = element.getAttribute('id');
@@ -385,11 +384,14 @@ regionSearch.addEventListener('change', (e) => {
 
   // 判斷篩選資料顯示
   // 如果為全部地區就顯示全部資料，反則顯示個別地區資料
-  if (regionValue === "全部地區") {
-    renderData(data);
-  } else {
-    renderData(filterData);
-  };
+  regionValue === "全部地區" ? renderData(data) : renderData(filterData);
+
+
+  // if (regionValue === "全部地區") {
+  //   renderData(data);
+  // } else {
+  //   renderData(filterData);
+  // };
 });
 
 
@@ -397,7 +399,7 @@ regionSearch.addEventListener('change', (e) => {
 function renderData(ticketData) {
   let htmlTemplate = ticketData.map((item) => {
     if (ticketData.length > 0) {
-      return `<li class="ticketCard" id${item.id}>
+      return `<li class="ticketCard" id="${item.id}">
       <div class="ticketCard-img">
           <a href="#">
               <img src="${item.imgUrl}"
@@ -436,7 +438,7 @@ function renderData(ticketData) {
 
   // 判斷有資料才移除 searchArea 的class 的 d-none樣式
   ticketData.length > 0 ? searchArea.classList.remove('d-none') : '';
- 
+
   // 顯示搜尋數量
   searchResulNum.textContent = ticketData.length;
 };
