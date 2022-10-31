@@ -52,6 +52,7 @@ const addTicketForm = document.querySelector('.addTicket-form');
 const inputs = document.querySelectorAll('input[type=text], input[type=number],#ticketRegion,textarea')
 
 // 地區搜尋
+const searchArea  = document.querySelector('.search-area');
 const regionSearch = document.querySelector('.regionSearch');
 
 // 地區搜尋資料數量
@@ -59,8 +60,6 @@ const searchResulNum = document.querySelector('#searchResulNum');
 
 // 套票卡片列表
 const ticketCardArea = document.querySelector('.ticketCard-area');
-
-
 
 
 
@@ -134,7 +133,6 @@ addTicketBtn.addEventListener('click', (e) => {
 
 // 套票表單綁定 input 監聽事件 
 addTicketForm.addEventListener('input', (e) => {
-  console.log(e.target.id);
   switch (e.target.id) {
     case 'ticketName':
       checkTicketName();
@@ -273,7 +271,6 @@ function checkticketRate() {
   const ticketRateValue = ticketRate.value.trim();
 
 
-
   if (!isRequired(ticketRateValue)) {
     setErrorMsg(ticketRate, '套票星級 必填!');
   } else if (!isNumValid(ticketRateValue) || ticketRateValue > 10) {
@@ -368,7 +365,6 @@ function setSuccessMsg(element) {
 // 建立套票資料
 function creatTicketData(formObj) {
   data.push(formObj);
-  console.log(data);
 };
 
 
@@ -435,6 +431,9 @@ function renderData(ticketData) {
   // 顯示畫面
   ticketCardArea.innerHTML = htmlTemplate;
 
+  // 判斷有資料才移除 searchArea 的class 的 d-none樣式
+  ticketData.length > 0 ? searchArea.classList.remove('d-none') : '';
+ 
   // 顯示搜尋數量
   searchResulNum.textContent = ticketData.length;
 };

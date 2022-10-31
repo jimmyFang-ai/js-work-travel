@@ -327,6 +327,10 @@ table {
   .search-area p {
     color: #818A91;
   }
+
+  .search-area.d-none  p {
+    display: none;
+  }
   
   @media (max-width: 768px) {
     .search-area {
