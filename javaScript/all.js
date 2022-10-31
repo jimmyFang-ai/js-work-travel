@@ -174,7 +174,6 @@ function isNumValid(price) {
 };
 
 
-
 // 驗證個別欄位
 
 // 驗證套票名稱
@@ -270,7 +269,6 @@ function checkticketRate() {
   let valid = false;
 
   const ticketRateValue = ticketRate.value.trim();
-
 
   if (!isRequired(ticketRateValue)) {
     setErrorMsg(ticketRate, '套票星級 必填!');
@@ -385,13 +383,6 @@ regionSearch.addEventListener('change', (e) => {
   // 判斷篩選資料顯示
   // 如果為全部地區就顯示全部資料，反則顯示個別地區資料
   regionValue === "全部地區" ? renderData(data) : renderData(filterData);
-
-
-  // if (regionValue === "全部地區") {
-  //   renderData(data);
-  // } else {
-  //   renderData(filterData);
-  // };
 });
 
 
